@@ -1,13 +1,13 @@
-import { Invoice, Plays, Play, Performance } from "./types";
+import { Invoice, Plays, Play, Performance } from './types';
 
 export default function statement(invoice: Invoice, plays: Plays): string {
   let totalAmount = 0;
   let volumeCredits = 0;
   let result = `청구내역 (고객명: ${invoice.customer})\n`;
 
-  const format = new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
+  const format = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
     minimumFractionDigits: 2,
   }).format;
 
@@ -20,7 +20,7 @@ export default function statement(invoice: Invoice, plays: Plays): string {
     volumeCredits += Math.max(perf.audience - 30, 0);
 
     // 희극 관객 5명마다 추가 포인트를 제공한다.
-    if ("comedy" === play.type) {
+    if ('comedy' === play.type) {
       volumeCredits += Math.floor(perf.audience / 5);
     }
 
@@ -40,13 +40,13 @@ function amountFor(perf: Performance, play: Play): number {
   let result = 0;
 
   switch (play.type) {
-    case "tragedy": // 비극
+    case 'tragedy': // 비극
       result = 40000;
       if (perf.audience > 30) {
         result += 1000 * (perf.audience - 30);
       }
       break;
-    case "comedy": // 희극
+    case 'comedy': // 희극
       result = 30000;
       if (perf.audience > 20) {
         result += 10000 + 500 * (perf.audience - 20);
