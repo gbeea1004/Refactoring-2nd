@@ -1,7 +1,7 @@
 type PlayID = 'hamlet' | 'as-like' | 'othello';
 type Genre = 'tragedy' | 'comedy';
 
-type Play = {
+export type Play = {
   name: string;
   type: Genre;
 };
@@ -15,7 +15,7 @@ export type Invoice = {
   performances: Performance[];
 };
 
-type Performance = {
+export type Performance = {
   playID: PlayID;
   audience: number;
 };
